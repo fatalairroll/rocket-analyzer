@@ -1,4 +1,3 @@
-# Entry point for Railway
 from upload import app
 
 if __name__ == '__main__':
