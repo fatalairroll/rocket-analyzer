@@ -1,9 +1,9 @@
 import openai
 import os
 
-client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
 def generate_analysis(data):
+    client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
     prompt = f"""You are a Rocket League coach. Based on the following match data, provide a fun, casual, and constructive analysis.
 
 Match data:
