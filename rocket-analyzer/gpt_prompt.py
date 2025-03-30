@@ -1,8 +1,9 @@
 import openai
 import os
 
+client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
 def generate_analysis(data):
-    openai.api_key = os.getenv("OPENAI_API_KEY")
     prompt = f"""You are a Rocket League coach. Based on the following match data, provide a fun, casual, and constructive analysis.
 
 Match data:
@@ -15,8 +16,10 @@ Match data:
 
 Explain what the player did well, what they can improve, and suggest specific training drills."""
 
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model="gpt-4",
-        messages=[{"role": "user", "content": prompt}]
+        messages=[
+            {"role": "user", "content": prompt}
+        ]
     )
-    return response.choices[0].message['content']
+    return response.choices[0].message.content
